@@ -1,0 +1,58 @@
+@page
+@model CartModel
+@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (Model.ShoppingCart.Items.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ShoppingCart.Items)
+            {
+                <tr>
+                <td>@item.Name</td>
+                <td>$@item.Price</td>
+                <td>
+                    <form method="post" asp-page-handler="UpdateQuantity">
+                        <input type="hidden" name="productId" value="@item.ProductId" />
+                        <input type="number" name="quantity" value="@item.Quantity" min="1" />
+                        <button type="submit">Update</button>
+                    </form>
+                </td>
+                <td>$@(item.Price * item.Quantity)</td>
+                <td>
+                    <form method="post" asp-page-handler="Remove">
+                        <input type="hidden" name="productId" value="@item.ProductId" />
+                        <button type="submit">Remove</button>
+                    </form>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    <p>Total: $@Model.ShoppingCart.TotalPrice().ToString("0.00")</p>
+}
+
+else
+{
+    <p>Your cart is empty.</p>
+}
+<a href="/Index">Continue Shopping</a>
+<a href="/Checkout">Proceed to Checkout</a>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

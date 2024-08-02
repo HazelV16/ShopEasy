@@ -1,0 +1,21 @@
+﻿@page
+@model ShopEasy.Pages.ProductDetailModel
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<h1>@Model.Product.Name</h1>
+<img src="@Model.Product.ImgURl" alt="@Model.Product.Name" style="width: 300px; height: 300px;" />
+<p>@Model.Product.Description</p>
+<p>$@Model.Product.Price</p>
+<p>Stock: @Model.Product.Stock</p>
+
+<form method="post" asp-page-handler="AddToCart" asp-route-id="@Model.Product.Id">
+    <input type="hidden" name="productId" value="@Model.Product.Id" />
+    <input type="hidden" name="name" value="@Model.Product.Name" />
+    <input type="hidden" name="price" value="@Model.Product.Price" />
+    <button type="submit">Add to Cart</button>
+</form>
+
+<a href="/Index">Back to Products</a>
+

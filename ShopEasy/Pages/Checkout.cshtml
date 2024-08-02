@@ -1,0 +1,73 @@
+@page
+@model ShopEasy.Pages.CheckoutModel
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<h1>Checkout</h1>
+
+@if (Model.CurrentShoppingCart.Items.Any())
+{
+    <h2>Order Summary</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CurrentShoppingCart.Items)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>$@item.Price</td>
+                    <td>@item.Quantity</td>
+                    <td>$@(item.Price * item.Quantity)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p>Total: $@Model.CurrentShoppingCart.TotalPrice()</p>
+    <br>
+    <h2>Billing Information</h2>
+    <form method="post">
+        <div>
+            <label asp-for="order.Name"></label>
+            <input asp-for="order.Name" />
+            <span asp-validation-for="order.Name"></span>
+        </div>
+        <br>
+        <div>
+            <label asp-for="order.Address"></label>
+            <input asp-for="order.Address" />
+            <span asp-validation-for="order.Address"></span>
+        </div>
+        <br>
+        <div>
+            <label asp-for="order.Email"></label>
+            <input asp-for="order.Email" />
+            <span asp-validation-for="order.Email"></span>
+        </div>
+        <br>
+        <div>
+            <label asp-for="order.Phone"></label>
+            <input asp-for="order.Phone" />
+            <span asp-validation-for="order.Phone"></span>
+        </div>
+        <br>
+        <button type="submit">Submit Order</button>
+    </form>
+}
+else
+{
+    <p>You have no order</p>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
