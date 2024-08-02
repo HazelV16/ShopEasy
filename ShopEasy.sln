@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1706.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopEasy", "ShopEasy\ShopEasy.csproj", "{40BAA85B-695F-43F4-BB4B-2BFFE082403E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40BAA85B-695F-43F4-BB4B-2BFFE082403E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40BAA85B-695F-43F4-BB4B-2BFFE082403E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40BAA85B-695F-43F4-BB4B-2BFFE082403E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40BAA85B-695F-43F4-BB4B-2BFFE082403E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDBB39D2-1A14-43A5-B5E1-44D83E479F67}
+	EndGlobalSection
+EndGlobal

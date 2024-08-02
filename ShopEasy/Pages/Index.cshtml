@@ -1,0 +1,28 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1 class="text-center">Welcome to plushie world!!!</h1>
+<h1>Products</h1> <br>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;">
+    @foreach (var product in Model.Products)
+    {
+        <div>
+            <img src="@product.ImgURl" alt="@product.Name" style="width: 150px; height: 150px"/>
+            <h2>@product.Name</h2>
+            <p>@product.Description></p>
+            <p>@product.Price</p>
+            <a asp-page="/ProductDetail" asp-route-id="@product.Id">View Details</a>
+            <form method="post" asp-page-handler="AddToCart">
+                <input type="hidden" name="productId" value="@product.Id" />
+                <input type="hidden" name="name" value="@product.Name" />
+                <input type="hidden" name="price" value="@product.Price" />
+                <button type="submit">Add to Cart</button> <br>
+            </form>
+        </div>
+    }
+</div>
+
